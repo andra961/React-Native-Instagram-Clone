@@ -9,8 +9,13 @@ import Profile from '../screens/Profile';
 import Reels from '../screens/Reels';
 import Activity from '../screens/Activity';
 import Search from '../screens/Search';
+import COLORS from '../constants/colors';
 
 const Tab = createBottomTabNavigator();
+
+const computeSize = (focused: boolean, size: number) => {
+  return focused ? size + 8 : size + 2;
+};
 
 const BottomTabNavigation = () => {
   return (
@@ -19,16 +24,20 @@ const BottomTabNavigation = () => {
         tabBarShowLabel: false,
         headerShown: false,
         tabBarStyle: {height: 50},
-        tabBarActiveTintColor: 'black',
+        tabBarActiveTintColor: COLORS.BLACK,
       })}>
       <Tab.Screen
         options={{
           tabBarIcon: ({focused, size, color}) => {
             const iconName = focused ? 'home-sharp' : 'home-outline';
 
-            size = focused ? size + 8 : size + 2;
-
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return (
+              <Ionicons
+                name={iconName}
+                size={computeSize(focused, size)}
+                color={color}
+              />
+            );
           },
         }}
         name={'Home'}
@@ -39,9 +48,13 @@ const BottomTabNavigation = () => {
           tabBarIcon: ({focused, size, color}) => {
             const iconName = focused ? 'search' : 'ios-search-outline';
 
-            size = focused ? size + 8 : size + 2;
-
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return (
+              <Ionicons
+                name={iconName}
+                size={computeSize(focused, size)}
+                color={color}
+              />
+            );
           },
         }}
         name={'Search'}
@@ -54,9 +67,13 @@ const BottomTabNavigation = () => {
               ? 'caret-forward-circle'
               : 'caret-forward-circle-outline';
 
-            size = focused ? size + 8 : size + 2;
-
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return (
+              <Ionicons
+                name={iconName}
+                size={computeSize(focused, size)}
+                color={color}
+              />
+            );
           },
         }}
         name={'Reels'}
@@ -67,9 +84,13 @@ const BottomTabNavigation = () => {
           tabBarIcon: ({focused, size, color}) => {
             const iconName = focused ? 'ios-heart' : 'ios-heart-outline';
 
-            size = focused ? size + 8 : size + 2;
-
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return (
+              <Ionicons
+                name={iconName}
+                size={computeSize(focused, size)}
+                color={color}
+              />
+            );
           },
         }}
         name={'Activity'}
@@ -82,9 +103,13 @@ const BottomTabNavigation = () => {
               ? 'ios-person-circle'
               : 'ios-person-outline';
 
-            size = focused ? size + 8 : size + 2;
-
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return (
+              <Ionicons
+                name={iconName}
+                size={computeSize(focused, size)}
+                color={color}
+              />
+            );
           },
         }}
         name={'Profile'}

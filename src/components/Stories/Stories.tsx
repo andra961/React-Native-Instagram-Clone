@@ -4,6 +4,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 
 import {useNavigation} from '@react-navigation/native';
 import {NavigateScreenProps} from '../../navigation/StackNavigation';
+import COLORS from '../../constants/colors';
 
 const Stories = () => {
   const navigation = useNavigation<NavigateScreenProps>();
@@ -71,8 +72,8 @@ const Stories = () => {
                     name="circle-with-plus"
                     style={{
                       fontSize: 20,
-                      color: '#405de6',
-                      backgroundColor: 'white',
+                      color: COLORS.BLUE,
+                      backgroundColor: COLORS.WHITE,
                       borderRadius: 100,
                     }}
                   />
@@ -82,10 +83,10 @@ const Stories = () => {
                 style={{
                   width: 68,
                   height: 68,
-                  backgroundColor: 'white',
+                  backgroundColor: COLORS.WHITE,
                   borderWidth: 1.8,
                   borderRadius: 100,
-                  borderColor: '#c13584',
+                  borderColor: COLORS.PROFILE_OUTLINE,
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}>
@@ -96,7 +97,7 @@ const Stories = () => {
                     width: '92%',
                     height: '92%',
                     borderRadius: 100,
-                    backgroundColor: 'orange',
+                    backgroundColor: COLORS.ORANGE,
                   }}
                 />
               </View>

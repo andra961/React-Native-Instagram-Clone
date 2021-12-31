@@ -6,12 +6,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Stories from '../../components/Stories';
 import Post from '../../components/Post';
+import COLORS from '../../constants/colors';
 
 const Home = () => {
   return (
-    <View style={{backgroundColor: 'white', height: '100%'}}>
+    <View style={{backgroundColor: COLORS.WHITE, height: '100%'}}>
       <StatusBar
-        backgroundColor={'white'}
+        backgroundColor={COLORS.WHITE}
         barStyle="dark-content"
         animated={true}
       />

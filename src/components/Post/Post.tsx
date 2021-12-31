@@ -5,6 +5,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import COLORS from '../../constants/colors';
 
 const Post = () => {
   const postInfo = [
@@ -68,7 +69,7 @@ const Post = () => {
             key={index}
             style={{
               paddingBottom: 10,
-              borderBottomColor: 'grey',
+              borderBottomColor: COLORS.GREY,
               borderBottomWidth: 0.1,
             }}>
             <View
@@ -117,7 +118,7 @@ const Post = () => {
                     style={{
                       paddingRight: 10,
                       fontSize: 20,
-                      color: like ? 'red' : 'black',
+                      color: like ? COLORS.RED : COLORS.BLACK,
                     }}
                   />
                 </TouchableOpacity>
@@ -162,7 +163,7 @@ const Post = () => {
                       width: 25,
                       height: 25,
                       borderRadius: 100,
-                      backgroundColor: 'orange',
+                      backgroundColor: COLORS.ORANGE,
                       marginRight: 10,
                     }}
                   />
@@ -174,15 +175,19 @@ const Post = () => {
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <Entypo
                     name="emoji-happy"
-                    style={{fontSize: 15, color: 'lightgreen', marginRight: 10}}
+                    style={{fontSize: 15, color: COLORS.GREEN, marginRight: 10}}
                   />
                   <Entypo
                     name="emoji-neutral"
-                    style={{fontSize: 15, color: 'pink', marginRight: 10}}
+                    style={{
+                      fontSize: 15,
+                      color: COLORS.ORANGE,
+                      marginRight: 10,
+                    }}
                   />
                   <Entypo
                     name="emoji-sad"
-                    style={{fontSize: 15, color: 'red'}}
+                    style={{fontSize: 15, color: COLORS.RED}}
                   />
                 </View>
               </View>
