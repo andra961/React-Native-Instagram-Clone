@@ -1,7 +1,9 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image, Dimensions} from 'react-native';
 
-import searchData from '../../constants/searchData';
+import searchData from '../../../../constants/searchData';
+
+import styles from './styles';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -16,20 +18,16 @@ const SearchContent = ({getData}: {getData: any}) => {
     <View>
       {searchData.map((data, index) => {
         return (
-          <>
+          <View key={index}>
             {data.id === 0 ? (
-              <View
-                style={{
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  justifyContent: 'space-between',
-                }}>
+              <View style={styles.firstRowContainer}>
                 {data.images.map((imageData, imgIndex) => {
                   return (
                     <TouchableOpacity
                       onPressIn={() => getData(imageData)}
                       onPressOut={() => getData(null)}
-                      style={{paddingBottom: 2}}>
+                      style={{paddingBottom: 2}}
+                      key={data.id + imgIndex}>
                       <Image
                         source={imageData}
                         style={{width: imgWidth, height: 150}}
@@ -40,8 +38,7 @@ const SearchContent = ({getData}: {getData: any}) => {
               </View>
             ) : null}
             {data.id === 1 ? (
-              <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <View style={styles.secondRowContainer}>
                 <View
                   style={{
                     flexDirection: 'row',
@@ -54,7 +51,8 @@ const SearchContent = ({getData}: {getData: any}) => {
                       <TouchableOpacity
                         onPressIn={() => getData(imageData)}
                         onPressOut={() => getData(null)}
-                        style={{paddingBottom: 2}}>
+                        style={{paddingBottom: 2}}
+                        key={data.id + imgIndex}>
                         <Image
                           source={imageData}
                           style={{width: imgWidth, height: 150}}
@@ -75,11 +73,7 @@ const SearchContent = ({getData}: {getData: any}) => {
               </View>
             ) : null}
             {data.id === 2 ? (
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}>
+              <View style={styles.thirdRowContainer}>
                 <TouchableOpacity
                   onPressIn={() => getData(data.images[2])}
                   onPressOut={() => getData(null)}
@@ -101,7 +95,8 @@ const SearchContent = ({getData}: {getData: any}) => {
                       <TouchableOpacity
                         onPressIn={() => getData(imageData)}
                         onPressOut={() => getData(null)}
-                        style={{paddingBottom: 2}}>
+                        style={{paddingBottom: 2}}
+                        key={data.id + imgIndex}>
                         <Image
                           source={imageData}
                           style={{width: imgWidth, height: 150}}
@@ -112,7 +107,7 @@ const SearchContent = ({getData}: {getData: any}) => {
                 </View>
               </View>
             ) : null}
-          </>
+          </View>
         );
       })}
     </View>

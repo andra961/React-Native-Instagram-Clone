@@ -18,6 +18,7 @@ const ReelsContent = () => {
     <SwiperFlatList
       data={videoData}
       onChangeIndex={handleChangeIndexValue}
+      vertical={true}
       renderItem={({item, index}: any) => (
         <SingleReel item={item} index={index} currentIndex={currentIndex} />
       )}

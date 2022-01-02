@@ -5,10 +5,10 @@ import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import COLORS from '../../constants/colors';
+import COLORS from '../../../../constants/colors';
 import styles from './styles';
 
-import postInfo from '../../constants/posts';
+import postInfo from '../../../../constants/posts';
 
 const Post = () => {
   return (

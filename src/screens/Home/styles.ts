@@ -19,6 +19,12 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: '500',
   },
+
+  refreshButtonWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
 });
 
 export default styles;

@@ -3,11 +3,11 @@ import {View, Text, ScrollView, TouchableOpacity, Image} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import {useNavigation} from '@react-navigation/native';
-import {NavigateScreenProps} from '../../navigation/StackNavigation';
-import COLORS from '../../constants/colors';
+import {NavigateScreenProps} from '../../../../navigation/StackNavigation';
+import COLORS from '../../../../constants/colors';
 import styles from './styles';
 
-import storyInfo from '../../constants/stories';
+import storyInfo from '../../../../constants/stories';
 
 const Stories = () => {
   const navigation = useNavigation<NavigateScreenProps>();

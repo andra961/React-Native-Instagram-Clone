@@ -1,11 +1,17 @@
 import React from 'react';
-import {View, Text, StatusBar, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  StatusBar,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import Stories from '../../components/Stories';
-import Post from '../../components/Post';
+import Stories from './components/Stories';
+import Post from '../Search/components/Post';
 import COLORS from '../../constants/colors';
 
 import styles from './styles';
@@ -26,13 +32,12 @@ const Home = () => {
       <ScrollView>
         <Stories />
         <Post />
-        <View
-          style={{justifyContent: 'center', alignItems: 'center', padding: 20}}>
+        <TouchableOpacity style={styles.refreshButtonWrapper}>
           <Ionicons
             name="ios-reload-circle-sharp"
             style={{fontSize: 60, opacity: 0.2}}
           />
-        </View>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );

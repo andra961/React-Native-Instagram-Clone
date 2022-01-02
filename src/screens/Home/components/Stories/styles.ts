@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import COLORS from '../../constants/colors';
+import COLORS from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   storyContainer: {
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   userImg: {
-    resizeMode: 'cover',
     width: '92%',
     height: '92%',
     borderRadius: 100,

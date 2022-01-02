@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
   },
   userImage: {
     borderRadius: 100,
-    resizeMode: 'cover',
     width: '92%',
     height: '92%',
   },
