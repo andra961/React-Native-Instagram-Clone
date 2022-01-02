@@ -8,30 +8,19 @@ import Stories from '../../components/Stories';
 import Post from '../../components/Post';
 import COLORS from '../../constants/colors';
 
+import styles from './styles';
+
 const Home = () => {
   return (
-    <View style={{backgroundColor: COLORS.WHITE, height: '100%'}}>
+    <View style={styles.headerBackground}>
       <StatusBar
         backgroundColor={COLORS.WHITE}
         barStyle="dark-content"
         animated={true}
       />
-      <View
-        style={{
-          justifyContent: 'space-between',
-          flexDirection: 'row',
-          paddingHorizontal: 15,
-          alignItems: 'center',
-        }}>
+      <View style={styles.headerContainer}>
         <FontAwesome name="plus-square-o" style={{fontSize: 24}} />
-        <Text
-          style={{
-            fontFamily: 'Lobster-Regular',
-            fontSize: 25,
-            fontWeight: '500',
-          }}>
-          Instagram
-        </Text>
+        <Text style={styles.instagramText}>Instagram</Text>
         <Feather name="navigation" style={{fontSize: 24}} />
       </View>
       <ScrollView>

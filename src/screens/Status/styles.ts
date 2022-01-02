@@ -4,10 +4,9 @@ import COLORS from '../../constants/colors';
 const styles = StyleSheet.create({
   statusContainer: {
     backgroundColor: COLORS.BLACK,
-    height: '100%',
-    position: 'relative',
     justifyContent: 'center',
     alignItems: 'center',
+    flex: 1,
   },
 
   statusBarContainer: {
@@ -18,7 +17,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 18,
   },
-  statusBarFilled: {height: '100%', backgroundColor: COLORS.WHITE},
+  statusBarFilled: {
+    height: '100%',
+    backgroundColor: COLORS.WHITE,
+  },
 
   statusHeaderContainer: {
     padding: 15,
@@ -48,9 +50,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
   },
-  userName: {color: COLORS.WHITE, fontSize: 15, paddingLeft: 10},
+  userName: {
+    color: COLORS.WHITE,
+    fontSize: 15,
+    paddingLeft: 10,
+  },
 
-  backGroundImage: {position: 'absolute', width: '100%', height: '77%'},
+  backGroundImage: {
+    position: 'absolute',
+    width: '100%',
+    height: '77%',
+    zIndex: -1,
+  },
 
   sendMsgContainer: {
     position: 'absolute',

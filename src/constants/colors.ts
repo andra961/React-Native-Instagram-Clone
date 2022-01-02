@@ -14,6 +14,10 @@ const COLORS = {
   BLUE: '#405de6',
 
   PROFILE_OUTLINE: '#c13584',
+
+  LIGHT_GREY: '#909090',
+
+  WHITE_2: '#EBEBEB',
 };
 
 export default COLORS;

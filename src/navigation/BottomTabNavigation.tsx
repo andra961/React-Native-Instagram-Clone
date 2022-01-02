@@ -21,6 +21,7 @@ const BottomTabNavigation = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
+        tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,
         headerShown: false,
         tabBarStyle: {height: 50},
