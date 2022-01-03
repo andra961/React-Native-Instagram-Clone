@@ -8,10 +8,25 @@ import BottomTabNavigation from './BottomTabNavigation';
 import {RouteProp} from '@react-navigation/native';
 import Status from '../screens/Status';
 import {ImageSourcePropType} from 'react-native';
+import FriendsProfile from '../screens/FriendsProfile';
+import EditProfile from '../screens/EditProfile';
 
 export type RootStackParamList = {
   BottomTabNavigation: undefined;
   Status: {name: string; image: ImageSourcePropType};
+  FriendsProfile: {
+    name: string;
+    profileImage: ImageSourcePropType;
+    follow: boolean;
+    post: number;
+    followers: number;
+    following: number;
+  };
+  EditProfile: {
+    name: string;
+    accountName: string;
+    profileImage: ImageSourcePropType;
+  };
 };
 
 const Stack = createNativeStackNavigator();
@@ -24,6 +39,8 @@ const StackNavigation = () => {
         component={BottomTabNavigation}
       />
       <Stack.Screen name={'Status'} component={Status} />
+      <Stack.Screen name={'FriendsProfile'} component={FriendsProfile} />
+      <Stack.Screen name={'EditProfile'} component={EditProfile} />
     </Stack.Navigator>
   );
 };
@@ -31,5 +48,15 @@ const StackNavigation = () => {
 export type NavigateScreenProps = NativeStackNavigationProp<RootStackParamList>;
 
 export type StatusScreenProp = RouteProp<RootStackParamList, 'Status'>;
+
+export type FriendsProfileScreenProp = RouteProp<
+  RootStackParamList,
+  'FriendsProfile'
+>;
+
+export type EditProfileScreenProp = RouteProp<
+  RootStackParamList,
+  'EditProfile'
+>;
 
 export default StackNavigation;
