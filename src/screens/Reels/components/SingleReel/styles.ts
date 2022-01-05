@@ -2,15 +2,14 @@ import {StyleSheet} from 'react-native';
 import COLORS from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
-  reelContainer: {
-    alignSelf: 'center',
-    justifyContent: 'center',
-  },
+  reelContainer: {},
 
   videoWrapper: {
     width: '100%',
-    height: '100%',
     position: 'absolute',
+    top: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   video: {
@@ -32,12 +31,13 @@ const styles = StyleSheet.create({
     zIndex: 1,
     bottom: 80,
     left: 0,
+    paddingBottom: 10,
   },
 
   infoContainer: {
-    width: 100,
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 10,
   },
 
   roundUserImgOutline: {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     height: 32,
     borderRadius: 100,
     backgroundColor: COLORS.WHITE,
-    margin: 10,
+    marginLeft: 12,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -59,18 +59,20 @@ const styles = StyleSheet.create({
   reelTitle: {
     color: COLORS.WHITE,
     fontSize: 16,
+    marginLeft: 10,
   },
 
   reelDescription: {
     color: COLORS.WHITE,
     fontSize: 14,
-    marginHorizontal: 10,
+    marginHorizontal: 12,
   },
 
   actionsContainer: {
     position: 'absolute',
-    bottom: 100,
-    right: 0,
+    bottom: 110,
+    right: 12,
+    alignItems: 'center',
   },
 
   squareUserImgOutline: {
@@ -79,7 +81,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 2,
     borderColor: COLORS.WHITE,
-    margin: 10,
   },
 
   squareUserImg: {

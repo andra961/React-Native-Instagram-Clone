@@ -25,9 +25,13 @@ const Home = () => {
         animated={true}
       />
       <View style={styles.headerContainer}>
-        <FontAwesome name="plus-square-o" style={{fontSize: 24}} />
+        <TouchableOpacity>
+          <FontAwesome name="plus-square-o" style={{fontSize: 24}} />
+        </TouchableOpacity>
         <Text style={styles.instagramText}>Instagram</Text>
-        <Feather name="navigation" style={{fontSize: 24}} />
+        <TouchableOpacity>
+          <Feather name="navigation" style={{fontSize: 24}} />
+        </TouchableOpacity>
       </View>
       <ScrollView>
         <Stories />

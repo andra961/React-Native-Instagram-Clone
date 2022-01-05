@@ -8,28 +8,16 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 import {NavigateScreenProps} from '../../navigation/StackNavigation';
 
+import styles from './styles';
+
 const Activity = () => {
   const navigation = useNavigation<NavigateScreenProps>();
 
   return (
-    <View
-      style={{
-        width: '100%',
-        height: '100%',
-        backgroundColor: COLORS.WHITE,
-      }}>
-      <Text
-        style={{
-          fontSize: 20,
-          fontWeight: 'bold',
-          borderBottomWidth: 0.5,
-          borderBottomColor: COLORS.WHITE_2,
-          padding: 10,
-        }}>
-        Activity
-      </Text>
+    <View style={styles.rootContainer}>
+      <Text style={styles.activityText}>Activity</Text>
       <ScrollView style={{margin: 10}} showsVerticalScrollIndicator={false}>
-        <Text style={{fontWeight: 'bold'}}>This Week</Text>
+        <Text style={styles.thisWeekText}>This Week</Text>
         <View style={{flexDirection: 'row', paddingVertical: 10}}>
           {friends.slice(0, 3).map((data, index) => {
             return (
@@ -51,19 +39,12 @@ const Activity = () => {
           })}
           <Text> Started following you</Text>
         </View>
-        <Text style={{fontWeight: 'bold'}}>Earlier</Text>
+        <Text style={styles.earlierText}>Earlier</Text>
         {friends.slice(3, 6).map((data, index) => {
           const [follow, setFollow] = useState<boolean>(data.follow);
           return (
             <View key={index} style={{width: '100%'}}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  paddingVertical: 20,
-                  width: '100%',
-                }}>
+              <View style={styles.mightKnowContainer}>
                 <TouchableOpacity
                   onPress={() =>
                     navigation.push('FriendsProfile', {
@@ -75,20 +56,10 @@ const Activity = () => {
                       following: data.following,
                     })
                   }
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    maxWidth: '64%',
-                  }}>
+                  style={styles.mightKnowTouchable}>
                   <Image
                     source={data.profileImage}
-                    style={{
-                      width: 45,
-                      height: 45,
-                      borderRadius: 100,
-                      marginRight: 10,
-                    }}
+                    style={styles.mightKnowImg}
                   />
                   <Text style={{fontSize: 15}}>
                     <Text style={{fontWeight: 'bold'}}>{data.name}</Text>, who
@@ -99,17 +70,17 @@ const Activity = () => {
                   onPress={() => setFollow(prev => !prev)}
                   style={{width: follow ? 72 : 68}}>
                   <View
-                    style={{
-                      width: '100%',
-                      height: 30,
-                      borderRadius: 5,
-                      backgroundColor: follow ? undefined : '#3493D9',
-                      borderWidth: follow ? 1 : 0,
-                      borderColor: follow ? '#DEDEDE' : undefined,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}>
-                    <Text style={{color: follow ? 'black' : 'white'}}>
+                    style={[
+                      styles.followButton,
+                      {
+                        backgroundColor: follow
+                          ? undefined
+                          : COLORS.BLUE_FOLLOW,
+                        borderWidth: follow ? 1 : 0,
+                        borderColor: follow ? COLORS.WHITE_3 : undefined,
+                      },
+                    ]}>
+                    <Text style={{color: follow ? COLORS.BLACK : COLORS.WHITE}}>
                       {follow ? 'Following' : 'Follow'}
                     </Text>
                   </View>
@@ -118,9 +89,7 @@ const Activity = () => {
             </View>
           );
         })}
-        <Text style={{fontWeight: 'bold', paddingVertical: 10}}>
-          Suggestion for you
-        </Text>
+        <Text style={styles.suggestionText}>Suggestion for you</Text>
         {friends.slice(6, 12).map((data, index) => {
           const [follow, setFollow] = useState<boolean>(data.follow);
           const [close, setClose] = useState<boolean>(false);
@@ -128,53 +97,33 @@ const Activity = () => {
           return (
             <View key={index}>
               {close ? null : (
-                <View
-                  style={{
-                    paddingVertical: 10,
-                    flexDirection: 'row',
-                    width: '100%',
-                    justifyContent: 'space-between',
-                  }}>
-                  <View style={{}}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.push('FriendsProfile', {
-                          name: data.name,
-                          profileImage: data.profileImage,
-                          follow: data.follow,
-                          post: data.posts,
-                          followers: data.followers,
-                          following: data.following,
-                        })
-                      }
-                      style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        maxWidth: '64%',
-                      }}>
-                      <Image
-                        source={data.profileImage}
-                        style={{
-                          width: 45,
-                          height: 45,
-                          borderRadius: 100,
-                          marginRight: 10,
-                        }}
-                      />
-                      <View style={{width: '100%'}}>
-                        <Text style={{fontSize: 14, fontWeight: 'bold'}}>
-                          {data.name}
-                        </Text>
-                        <Text style={{fontSize: 12, opacity: 0.5}}>
-                          {data.accountName}
-                        </Text>
-                        <Text style={{fontSize: 12, opacity: 0.5}}>
-                          {' '}
-                          Suggested for you
-                        </Text>
-                      </View>
-                    </TouchableOpacity>
-                  </View>
+                <View style={styles.suggestionContainer}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.push('FriendsProfile', {
+                        name: data.name,
+                        profileImage: data.profileImage,
+                        follow: data.follow,
+                        post: data.posts,
+                        followers: data.followers,
+                        following: data.following,
+                      })
+                    }
+                    style={styles.suggestionTouchable}>
+                    <Image
+                      source={data.profileImage}
+                      style={styles.suggestionImg}
+                    />
+                    <View style={{width: '100%'}}>
+                      <Text style={styles.suggestionName}>{data.name}</Text>
+                      <Text style={styles.suggestionAccountName}>
+                        {data.accountName}
+                      </Text>
+                      <Text style={styles.suggestedForYouText}>
+                        Suggested for you
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
                   <View style={{flexDirection: 'row', alignItems: 'center'}}>
                     {follow ? (
                       <TouchableOpacity
@@ -183,18 +132,21 @@ const Activity = () => {
                           width: follow ? 90 : 68,
                         }}>
                         <View
-                          style={{
-                            width: '100%',
-                            height: 30,
-                            borderRadius: 5,
-                            backgroundColor: follow ? undefined : '#3493D9',
-                            borderWidth: follow ? 1 : 0,
-                            borderColor: '#DEDEDE',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                          }}>
-                          <Text style={{color: follow ? 'black' : 'white'}}>
-                            {follow ? 'following' : 'follow'}
+                          style={[
+                            styles.followButton,
+                            {
+                              backgroundColor: follow
+                                ? undefined
+                                : COLORS.BLUE_FOLLOW,
+                              borderWidth: follow ? 1 : 0,
+                              borderColor: follow ? COLORS.WHITE_3 : undefined,
+                            },
+                          ]}>
+                          <Text
+                            style={{
+                              color: follow ? COLORS.BLACK : COLORS.WHITE,
+                            }}>
+                            {follow ? 'Following' : 'Follow'}
                           </Text>
                         </View>
                       </TouchableOpacity>
@@ -204,27 +156,36 @@ const Activity = () => {
                           onPress={() => setFollow(prev => !prev)}
                           style={{width: follow ? 90 : 68}}>
                           <View
-                            style={{
-                              width: '100%',
-                              height: 30,
-                              borderRadius: 5,
-                              backgroundColor: follow ? undefined : '#3493D9',
-                              borderWidth: follow ? 1 : 0,
-                              borderColor: '#DEDEDE',
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                            }}>
-                            <Text style={{color: follow ? 'black' : 'white'}}>
-                              {follow ? 'following' : 'follow'}
+                            style={[
+                              styles.followButton,
+                              {
+                                backgroundColor: follow
+                                  ? undefined
+                                  : COLORS.BLUE_FOLLOW,
+                                borderWidth: follow ? 1 : 0,
+                                borderColor: follow
+                                  ? COLORS.WHITE_3
+                                  : undefined,
+                              },
+                            ]}>
+                            <Text
+                              style={{
+                                color: follow ? COLORS.BLACK : COLORS.WHITE,
+                              }}>
+                              {follow ? 'Following' : 'Follow'}
                             </Text>
                           </View>
                         </TouchableOpacity>
                         <TouchableOpacity
                           onPress={() => setClose(true)}
-                          style={{paddingHorizontal: 10}}>
+                          style={styles.touchableCloseIcon}>
                           <AntDesign
                             name="close"
-                            style={{fontSize: 14, color: 'black', opacity: 0.8}}
+                            style={{
+                              fontSize: 14,
+                              color: COLORS.BLACK,
+                              opacity: 0.8,
+                            }}
                           />
                         </TouchableOpacity>
                       </>
@@ -235,9 +196,9 @@ const Activity = () => {
             </View>
           );
         })}
-        <View style={{padding: 20}}>
-          <Text style={{color: '#3493D9'}}>See all Suggestions</Text>
-        </View>
+        <TouchableOpacity style={{padding: 20}}>
+          <Text style={styles.seeAllSuggestionText}>See all Suggestions</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );

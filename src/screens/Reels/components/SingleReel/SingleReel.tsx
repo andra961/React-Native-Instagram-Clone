@@ -6,8 +6,11 @@ import {
   TouchableOpacity,
   Image,
   ActivityIndicator,
+  StatusBar,
 } from 'react-native';
 import COLORS from '../../../../constants/colors';
+
+import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -18,8 +21,14 @@ import Video from 'react-native-video';
 import styles from './styles';
 
 const SingleReel = ({item, index, currentIndex}: any) => {
+  const tabBarHeight = useBottomTabBarHeight();
   const screenWidth = Dimensions.get('window').width;
   const screenHeight = Dimensions.get('window').height;
+
+  const videoHeight =
+    Dimensions.get('window').height -
+    tabBarHeight -
+    (StatusBar.currentHeight || 0);
 
   const videoRef = useRef(null);
 
@@ -46,7 +55,7 @@ const SingleReel = ({item, index, currentIndex}: any) => {
       <TouchableOpacity
         activeOpacity={0.9}
         onPress={() => setMute(prev => !prev)}
-        style={styles.videoWrapper}>
+        style={[styles.videoWrapper, {height: videoHeight}]}>
         <Video
           source={item.video}
           ref={videoRef}
@@ -55,20 +64,21 @@ const SingleReel = ({item, index, currentIndex}: any) => {
           repeat={true}
           paused={currentIndex === index ? false : true}
           muted={mute}
+          resizeMode="cover"
           style={styles.video}
         />
+        {mute ? (
+          <View style={styles.muteIconWrapper}>
+            <Ionicons
+              name="volume-mute"
+              style={{
+                fontSize: 20,
+                color: COLORS.WHITE,
+              }}
+            />
+          </View>
+        ) : null}
       </TouchableOpacity>
-      {mute ? (
-        <View style={styles.muteIconWrapper}>
-          <Ionicons
-            name="volume-mute"
-            style={{
-              fontSize: 20,
-              color: COLORS.WHITE,
-            }}
-          />
-        </View>
-      ) : null}
 
       <View style={styles.overlayContainer}>
         <TouchableOpacity style={{width: 150}}>
@@ -91,26 +101,26 @@ const SingleReel = ({item, index, currentIndex}: any) => {
       <View style={styles.actionsContainer}>
         <TouchableOpacity
           onPress={() => setLike(prev => !prev)}
-          style={{padding: 10}}>
+          style={{paddingBottom: 10}}>
           <AntDesign
             name={like ? 'heart' : 'hearto'}
             style={{color: like ? COLORS.RED : COLORS.WHITE, fontSize: 25}}
           />
           <Text style={{color: COLORS.WHITE}}>{item.likes}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{padding: 10}}>
+        <TouchableOpacity style={{paddingBottom: 10, margin: 0}}>
           <Ionicons
             name="ios-chatbubble-outline"
             style={{color: COLORS.WHITE, fontSize: 25}}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={{padding: 10}}>
+        <TouchableOpacity style={{paddingBottom: 10, margin: 0}}>
           <Ionicons
             name="paper-plane-outline"
             style={{color: COLORS.WHITE, fontSize: 25}}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={{padding: 10}}>
+        <TouchableOpacity style={{paddingBottom: 10, margin: 0}}>
           <Feather
             name="more-vertical"
             style={{color: COLORS.WHITE, fontSize: 25}}

@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 
 import Feather from 'react-native-vector-icons/Feather';
+import COLORS from '../../constants/colors';
 
 import styles from './styles';
 
@@ -19,26 +20,32 @@ const ProfileBody = ({
         <View style={styles.headerContainer}>
           <View style={styles.headerLeftSide}>
             <Text style={styles.headerAccountName}>{accountName}</Text>
-            <Feather
-              name="chevron-down"
-              style={{
-                fontSize: 20,
-                color: 'black',
-                paddingHorizontal: 5,
-                opacity: 0.5,
-              }}
-            />
+            <TouchableOpacity>
+              <Feather
+                name="chevron-down"
+                style={{
+                  fontSize: 20,
+                  color: COLORS.BLACK,
+                  paddingHorizontal: 5,
+                  opacity: 0.5,
+                }}
+              />
+            </TouchableOpacity>
           </View>
           <View style={styles.headerRightSide}>
-            <Feather
-              name="plus-square"
-              style={{
-                fontSize: 25,
-                color: 'black',
-                paddingHorizontal: 15,
-              }}
-            />
-            <Feather name="menu" style={{fontSize: 25}} />
+            <TouchableOpacity>
+              <Feather
+                name="plus-square"
+                style={{
+                  fontSize: 25,
+                  color: COLORS.BLACK,
+                  paddingHorizontal: 15,
+                }}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Feather name="menu" style={{fontSize: 25}} />
+            </TouchableOpacity>
           </View>
         </View>
       ) : null}

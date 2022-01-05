@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Dimensions} from 'react-native';
+import {View, Text, Dimensions, TouchableOpacity} from 'react-native';
 import COLORS from '../../constants/colors';
 
 import Feather from 'react-native-vector-icons/Feather';
@@ -19,7 +19,9 @@ const Reels = () => {
       ]}>
       <View style={styles.headerContainer}>
         <Text style={styles.reelsTitle}>Reels</Text>
-        <Feather name="camera" style={{fontSize: 25, color: COLORS.WHITE}} />
+        <TouchableOpacity>
+          <Feather name="camera" style={{fontSize: 25, color: COLORS.WHITE}} />
+        </TouchableOpacity>
       </View>
       <ReelsContent />
     </View>

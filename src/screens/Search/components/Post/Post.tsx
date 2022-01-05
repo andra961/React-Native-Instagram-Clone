@@ -22,7 +22,9 @@ const Post = () => {
                 <Image source={data.postPersonImage} style={styles.posterImg} />
                 <Text style={styles.postTitle}>{data.postTitle}</Text>
               </View>
-              <Feather name="more-vertical" style={{fontSize: 20}} />
+              <TouchableOpacity>
+                <Feather name="more-vertical" style={{fontSize: 20}} />
+              </TouchableOpacity>
             </View>
 
             <Image source={data.postImage} style={styles.postImg} />
@@ -56,7 +58,9 @@ const Post = () => {
                   />
                 </TouchableOpacity>
               </View>
-              <Feather name="bookmark" style={{fontSize: 20}} />
+              <TouchableOpacity>
+                <Feather name="bookmark" style={{fontSize: 20}} />
+              </TouchableOpacity>
             </View>
             <View style={styles.infoContainer}>
               <Text style={styles.likes}>
@@ -66,7 +70,9 @@ const Post = () => {
               <Text style={styles.description}>
                 If enjoy the video Please like and Subscribe :)
               </Text>
-              <Text style={styles.viewComments}>View all comments</Text>
+              <TouchableOpacity>
+                <Text style={styles.viewComments}>View all comments</Text>
+              </TouchableOpacity>
               <View style={styles.addCommentContainer}>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <Image source={data.postPersonImage} style={styles.userImg} />
@@ -76,22 +82,32 @@ const Post = () => {
                   />
                 </View>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                  <Entypo
-                    name="emoji-happy"
-                    style={{fontSize: 15, color: COLORS.GREEN, marginRight: 10}}
-                  />
-                  <Entypo
-                    name="emoji-neutral"
-                    style={{
-                      fontSize: 15,
-                      color: COLORS.ORANGE,
-                      marginRight: 10,
-                    }}
-                  />
-                  <Entypo
-                    name="emoji-sad"
-                    style={{fontSize: 15, color: COLORS.RED}}
-                  />
+                  <TouchableOpacity>
+                    <Entypo
+                      name="emoji-happy"
+                      style={{
+                        fontSize: 15,
+                        color: COLORS.GREEN,
+                        marginRight: 10,
+                      }}
+                    />
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Entypo
+                      name="emoji-neutral"
+                      style={{
+                        fontSize: 15,
+                        color: COLORS.ORANGE,
+                        marginRight: 10,
+                      }}
+                    />
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Entypo
+                      name="emoji-sad"
+                      style={{fontSize: 15, color: COLORS.RED}}
+                    />
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>

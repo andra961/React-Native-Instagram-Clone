@@ -15,6 +15,9 @@ import {
 } from '../../navigation/StackNavigation';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import COLORS from '../../constants/colors';
+
+import styles from './styles';
 
 const EditProfile = () => {
   const {
@@ -28,49 +31,36 @@ const EditProfile = () => {
   };
 
   return (
-    <View
-      style={{
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'white',
-      }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: 10,
-        }}>
+    <View style={styles.rootContainer}>
+      <View style={styles.headerContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="close-outline" style={{fontSize: 35}} />
         </TouchableOpacity>
-        <Text style={{fontSize: 16, fontWeight: 'bold'}}>Edit Profile</Text>
+        <Text style={styles.editProfileText}>Edit Profile</Text>
         <TouchableOpacity
           onPress={() => {
             ToastMessage();
             navigation.goBack();
           }}>
-          <Ionicons name="checkmark" style={{fontSize: 35, color: '#3493D9'}} />
+          <Ionicons
+            name="checkmark"
+            style={{fontSize: 35, color: COLORS.BLUE_FOLLOW}}
+          />
         </TouchableOpacity>
       </View>
-      <View style={{padding: 20, alignItems: 'center'}}>
-        <Image
-          source={profileImage}
-          style={{width: 80, height: 80, borderRadius: 100}}
-        />
-        <Text style={{color: '#3493D9'}}>Change profile photo</Text>
+      <View style={styles.imgContainer}>
+        <Image source={profileImage} style={styles.profileImage} />
+        <TouchableOpacity>
+          <Text style={styles.changePhotoText}>Change profile photo</Text>
+        </TouchableOpacity>
       </View>
-      <View style={{padding: 10}}>
+      <View style={styles.formContainer}>
         <View>
           <Text style={{opacity: 0.5}}>Name</Text>
           <TextInput
             placeholder="name"
             defaultValue={name}
-            style={{
-              fontSize: 16,
-              borderBottomWidth: 1,
-              borderColor: '#CDCDCD',
-            }}
+            style={styles.formTextInput}
           />
         </View>
         <View style={{paddingVertical: 10}}>
@@ -78,60 +68,22 @@ const EditProfile = () => {
           <TextInput
             placeholder="accountName"
             defaultValue={accountName}
-            style={{
-              fontSize: 16,
-              borderBottomWidth: 1,
-              borderColor: '#CDCDCD',
-            }}
+            style={styles.formTextInput}
           />
         </View>
         <View style={{paddingVertical: 10}}>
-          <TextInput
-            placeholder="Website"
-            style={{
-              fontSize: 16,
-              borderBottomWidth: 1,
-              borderColor: '#CDCDCD',
-            }}
-          />
+          <TextInput placeholder="Website" style={styles.formTextInput} />
         </View>
         <View style={{paddingVertical: 10}}>
-          <TextInput
-            placeholder="Bio"
-            style={{
-              fontSize: 16,
-              borderBottomWidth: 1,
-              borderColor: '#CDCDCD',
-            }}
-          />
+          <TextInput placeholder="Bio" style={styles.formTextInput} />
         </View>
       </View>
-      <View>
-        <Text
-          style={{
-            marginVertical: 10,
-            padding: 10,
-            color: '#3493D9',
-            borderTopWidth: 1,
-            borderBottomWidth: 1,
-            borderColor: '#EFEFEF',
-          }}>
-          Switch to Professional account
-        </Text>
-      </View>
-      <View>
-        <Text
-          style={{
-            marginVertical: 10,
-            padding: 10,
-            color: '#3493D9',
-            borderTopWidth: 1,
-            borderBottomWidth: 1,
-            borderColor: '#EFEFEF',
-          }}>
-          Personal information setting
-        </Text>
-      </View>
+      <TouchableOpacity>
+        <Text style={styles.switchTo}>Switch to Professional account</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Text style={styles.switchTo}>Personal information setting</Text>
+      </TouchableOpacity>
     </View>
   );
 };

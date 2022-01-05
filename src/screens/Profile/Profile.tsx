@@ -18,9 +18,9 @@ const Profile = () => {
     circuls.push(
       <View key={index}>
         {index === 0 ? (
-          <View style={styles.plusCircle}>
+          <TouchableOpacity style={styles.plusCircle}>
             <Entypo name="plus" style={{fontSize: 40, color: 'black'}} />
-          </View>
+          </TouchableOpacity>
         ) : (
           <View style={styles.emptyCircles}></View>
         )}

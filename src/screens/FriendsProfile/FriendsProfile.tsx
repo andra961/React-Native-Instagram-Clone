@@ -15,6 +15,9 @@ import ProfileBody from '../../components/ProfileBody';
 import ProfileButtons from './components/ProfileButtons';
 
 import {friends} from '../../constants/friends';
+import COLORS from '../../constants/colors';
+
+import styles from './styles';
 
 const FriendsProfile = () => {
   const {
@@ -23,31 +26,19 @@ const FriendsProfile = () => {
 
   const navigation = useNavigation<NavigateScreenProps>();
   return (
-    <View
-      style={{
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'white',
-        padding: 10,
-      }}>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+    <View style={styles.rootContainer}>
+      <View style={styles.headerContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" style={{fontSize: 20, color: 'black'}} />
         </TouchableOpacity>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            width: '92%',
-          }}>
-          <Text style={{fontSize: 15, marginLeft: 10, fontWeight: 'bold'}}>
-            {name}
-          </Text>
-          <Feather
-            name="more-vertical"
-            style={{fontSize: 20, color: 'black'}}
-          />
+        <View style={styles.headerRightContainer}>
+          <Text style={styles.headerNameText}>{name}</Text>
+          <TouchableOpacity>
+            <Feather
+              name="more-vertical"
+              style={{fontSize: 20, color: 'black'}}
+            />
+          </TouchableOpacity>
         </View>
       </View>
       <ProfileBody
@@ -58,14 +49,7 @@ const FriendsProfile = () => {
         following={following}
       />
       <ProfileButtons />
-      <Text
-        style={{
-          paddingVertical: 10,
-          fontSize: 15,
-          fontWeight: 'bold',
-        }}>
-        Suggested for you
-      </Text>
+      <Text style={styles.suggestionText}>Suggested for you</Text>
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -78,20 +62,10 @@ const FriendsProfile = () => {
               return (
                 <View key={index}>
                   {data.name === name || close ? null : (
-                    <View
-                      style={{
-                        width: 160,
-                        height: 200,
-                        margin: 3,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        borderColor: '#DEDEDE',
-                        borderRadius: 2,
-                        borderWidth: 0.5,
-                      }}>
+                    <View style={styles.friendContainer}>
                       <TouchableOpacity
                         onPress={() => setClose(true)}
-                        style={{position: 'absolute', top: 10, right: 10}}>
+                        style={styles.closeButtonWrapper}>
                         <AntDesign
                           name="close"
                           style={{fontSize: 20, color: 'black', opacity: 0.5}}
@@ -99,32 +73,28 @@ const FriendsProfile = () => {
                       </TouchableOpacity>
                       <Image
                         source={data.profileImage}
-                        style={{
-                          width: 80,
-                          height: 80,
-                          borderRadius: 100,
-                          margin: 10,
-                        }}
+                        style={styles.friendImg}
                       />
-                      <Text style={{fontWeight: 'bold', fontSize: 16}}>
-                        {data.name}
+                      <Text style={styles.friendName}>{data.name}</Text>
+                      <Text style={styles.friendAccountName}>
+                        {data.accountName}
                       </Text>
-                      <Text style={{fontSize: 12}}>{data.accountName}</Text>
                       <TouchableOpacity
                         onPress={() => setIsFollow(prev => !prev)}
-                        style={{width: '80%', paddingVertical: 10}}>
+                        style={styles.followButtonWrapper}>
                         <View
-                          style={{
-                            width: '100%',
-                            height: 30,
-                            borderRadius: 5,
-                            backgroundColor: isFollow ? undefined : '#3493D9',
-                            borderWidth: isFollow ? 1 : 0,
-                            borderColor: '#DEDEDE',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                          }}>
-                          <Text style={{color: isFollow ? 'black' : 'white'}}>
+                          style={[
+                            styles.followButton,
+                            {
+                              backgroundColor: isFollow
+                                ? undefined
+                                : COLORS.BLUE_FOLLOW,
+                            },
+                          ]}>
+                          <Text
+                            style={{
+                              color: isFollow ? COLORS.BLACK : COLORS.WHITE,
+                            }}>
                             {isFollow ? 'Following' : 'Follow'}
                           </Text>
                         </View>

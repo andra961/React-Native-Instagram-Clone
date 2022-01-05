@@ -13,6 +13,8 @@ const COLORS = {
 
   BLUE: '#405de6',
 
+  BLUE_FOLLOW: '#3493D9',
+
   PROFILE_OUTLINE: '#c13584',
 
   LIGHT_GREY: '#909090',
@@ -20,6 +22,10 @@ const COLORS = {
   WHITE_2: '#EBEBEB',
 
   WHITE_3: '#DEDEDE',
+
+  WHITE_4: '#CDCDCD',
+
+  WHITE_5: '#EFEFEF',
 
   DARK_GREY: '#525252',
 

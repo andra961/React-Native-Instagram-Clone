@@ -3,9 +3,8 @@ import COLORS from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   square: {
-    width: 136,
     height: 150,
-    marginVertical: 2,
+    marginVertical: 1,
     backgroundColor: 'black',
     opacity: 0.1,
   },
