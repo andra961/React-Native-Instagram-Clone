@@ -11,7 +11,8 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import ProfileBody, {ProfileButtons} from './components/ProfileBody';
+import ProfileBody from '../../components/ProfileBody';
+import ProfileButtons from './components/ProfileButtons';
 
 import {friends} from '../../constants/friends';
 
@@ -56,7 +57,7 @@ const FriendsProfile = () => {
         followers={followers}
         following={following}
       />
-      <ProfileButtons id={1} />
+      <ProfileButtons />
       <Text
         style={{
           paddingVertical: 10,

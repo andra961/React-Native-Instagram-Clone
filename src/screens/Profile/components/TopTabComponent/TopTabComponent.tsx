@@ -1,8 +1,17 @@
-import React, {Component} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import React from 'react';
+import {View, Text, ScrollView, Dimensions} from 'react-native';
 
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import styles from './styles';
+import COLORS from '../../../../constants/colors';
+
+const screenWidth = Dimensions.get('window').width;
+
+const separatorWidth = 2;
+
+const squareWidth = (screenWidth - separatorWidth * 2) / 3;
 
 const TopTab = createMaterialTopTabNavigator();
 
@@ -13,93 +22,31 @@ const TopTabComponent = () => {
   for (let index = 0; index < numberOfSquares; index++) {
     squares.push(
       <View key={index}>
-        <View
-          style={{
-            width: 136,
-            height: 150,
-            marginVertical: 0.5,
-            backgroundColor: 'black',
-            opacity: 0.1,
-          }}></View>
+        <View style={[styles.square, {width: squareWidth}]}></View>
       </View>,
     );
   }
-  const Posts = () => {
+
+  const EmptySquares = () => {
     return (
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={{
-          width: '100%',
-          height: '100%',
-        }}>
-        <View
-          style={{
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'white',
-            flexWrap: 'wrap',
-            flexDirection: 'row',
-            paddingVertical: 5,
-            justifyContent: 'space-between',
-          }}>
-          {squares}
-        </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.squaresGrid}>{squares}</View>
       </ScrollView>
     );
   };
-  const Videos = () => {
-    return (
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={{
-          width: '100%',
-          height: '100%',
-        }}>
-        <View
-          style={{
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'white',
-            flexWrap: 'wrap',
-            flexDirection: 'row',
-            paddingVertical: 5,
-            justifyContent: 'space-between',
-          }}>
-          {squares}
-        </View>
-      </ScrollView>
-    );
-  };
-  const Tags = () => {
-    return (
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={{
-          width: '100%',
-          height: '100%',
-        }}>
-        <View
-          style={{
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'white',
-            flexWrap: 'wrap',
-            flexDirection: 'row',
-            paddingVertical: 5,
-            justifyContent: 'space-between',
-          }}>
-          {squares}
-        </View>
-      </ScrollView>
-    );
-  };
+
+  const Posts = () => <EmptySquares />;
+
+  const Videos = () => <EmptySquares />;
+
+  const Tags = () => <EmptySquares />;
 
   return (
     <TopTab.Navigator
       screenOptions={({route: any}) => ({
         tabBarShowLabel: false,
         tabBarIndicatorStyle: {
-          backgroundColor: 'black',
+          backgroundColor: COLORS.BLACK,
           height: 1.5,
         },
       })}>

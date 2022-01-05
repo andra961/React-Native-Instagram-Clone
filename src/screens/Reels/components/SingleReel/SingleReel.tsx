@@ -14,7 +14,6 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 
 import Video from 'react-native-video';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import styles from './styles';
 
@@ -117,23 +116,8 @@ const SingleReel = ({item, index, currentIndex}: any) => {
             style={{color: COLORS.WHITE, fontSize: 25}}
           />
         </TouchableOpacity>
-        <View
-          style={{
-            width: 30,
-            height: 30,
-            borderRadius: 10,
-            borderWidth: 2,
-            borderColor: COLORS.WHITE,
-            margin: 10,
-          }}>
-          <Image
-            source={item.postProfile}
-            style={{
-              width: '100%',
-              height: '100%',
-              borderRadius: 10,
-            }}
-          />
+        <View style={styles.squareUserImgOutline}>
+          <Image source={item.postProfile} style={styles.squareUserImg} />
         </View>
       </View>
     </View>

@@ -33,7 +33,8 @@ const Stack = createNativeStackNavigator();
 
 const StackNavigation = () => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator
+      screenOptions={{headerShown: false, animation: 'slide_from_right'}}>
       <Stack.Screen
         name={'BottomTabNavigation'}
         component={BottomTabNavigation}

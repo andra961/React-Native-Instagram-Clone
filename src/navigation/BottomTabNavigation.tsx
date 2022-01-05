@@ -10,6 +10,7 @@ import Reels from '../screens/Reels';
 import Activity from '../screens/Activity';
 import Search from '../screens/Search';
 import COLORS from '../constants/colors';
+import {Touchable, TouchableOpacity} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,6 +41,8 @@ const BottomTabNavigation = () => {
               />
             );
           },
+
+          tabBarButton: props => <TouchableOpacity {...props} />,
         }}
         name={'Home'}
         component={Home}
@@ -57,6 +60,7 @@ const BottomTabNavigation = () => {
               />
             );
           },
+          tabBarButton: props => <TouchableOpacity {...props} />,
         }}
         name={'Search'}
         component={Search}
@@ -76,6 +80,7 @@ const BottomTabNavigation = () => {
               />
             );
           },
+          tabBarButton: props => <TouchableOpacity {...props} />,
         }}
         name={'Reels'}
         component={Reels}
@@ -93,6 +98,7 @@ const BottomTabNavigation = () => {
               />
             );
           },
+          tabBarButton: props => <TouchableOpacity {...props} />,
         }}
         name={'Activity'}
         component={Activity}
@@ -112,6 +118,7 @@ const BottomTabNavigation = () => {
               />
             );
           },
+          tabBarButton: props => <TouchableOpacity {...props} />,
         }}
         name={'Profile'}
         component={Profile}

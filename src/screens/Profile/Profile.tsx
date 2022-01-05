@@ -1,11 +1,14 @@
 import React from 'react';
-import {View, Text, ScrollView} from 'react-native';
-import ProfileBody, {
-  ProfileButtons,
-} from '../FriendsProfile/components/ProfileBody';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import ProfileBody from '../../components/ProfileBody';
+import ProfileButtons from '../FriendsProfile/components/ProfileButtons';
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import TopTabComponent from './components/TopTabComponent';
+
+import styles from './styles';
+import {useNavigation} from '@react-navigation/native';
+import {NavigateScreenProps} from '../../navigation/StackNavigation';
 
 const Profile = () => {
   let circuls = [];
@@ -15,37 +18,21 @@ const Profile = () => {
     circuls.push(
       <View key={index}>
         {index === 0 ? (
-          <View
-            style={{
-              width: 60,
-              height: 60,
-              borderRadius: 100,
-              borderWidth: 1,
-              opacity: 0.7,
-              marginHorizontal: 5,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+          <View style={styles.plusCircle}>
             <Entypo name="plus" style={{fontSize: 40, color: 'black'}} />
           </View>
         ) : (
-          <View
-            style={{
-              width: 60,
-              height: 60,
-              borderRadius: 100,
-              backgroundColor: 'black',
-              opacity: 0.1,
-              marginHorizontal: 5,
-            }}></View>
+          <View style={styles.emptyCircles}></View>
         )}
       </View>,
     );
   }
 
+  const navigation = useNavigation<NavigateScreenProps>();
+
   return (
-    <View style={{width: '100%', height: '100%', backgroundColor: 'white'}}>
-      <View style={{width: '100%', padding: 10}}>
+    <View style={styles.rootContainer}>
+      <View style={{padding: 10}}>
         <ProfileBody
           name="Mr Peobody"
           accountName="mr_peobody"
@@ -54,32 +41,29 @@ const Profile = () => {
           following="35"
           post="458"
         />
-        <ProfileButtons
-          id={0}
-          name="Mr Peobody"
-          accountName="mr_peobody"
-          profileImage={require('../../../assets/images/userProfile.jpg')}
-        />
+
+        <TouchableOpacity
+          onPress={() =>
+            navigation.push('EditProfile', {
+              name: 'Mr Peobody',
+              accountName: 'mr_peobody',
+              profileImage: require('../../../assets/images/userProfile.jpg'),
+            })
+          }
+          style={styles.editButton}>
+          <Text style={styles.editButtonText}>Edit Profile</Text>
+        </TouchableOpacity>
       </View>
+      <Text style={styles.storyHiglightText}>Story Highlights</Text>
       <View>
-        <Text
-          style={{
-            padding: 10,
-            letterSpacing: 1,
-            fontSize: 14,
-          }}>
-          Story Highlights
-        </Text>
         <ScrollView
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          style={{
-            paddingVertical: 5,
-            paddingHorizontal: 10,
-          }}>
+          style={styles.circleScroll}>
           {circuls}
         </ScrollView>
       </View>
+
       <TopTabComponent />
     </View>
   );

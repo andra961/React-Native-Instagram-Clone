@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 1,
     bottom: 80,
-    padding: 10,
+    left: 0,
   },
 
   infoContainer: {
@@ -71,6 +71,21 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 100,
     right: 0,
+  },
+
+  squareUserImgOutline: {
+    width: 30,
+    height: 30,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: COLORS.WHITE,
+    margin: 10,
+  },
+
+  squareUserImg: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 10,
   },
 });
 
