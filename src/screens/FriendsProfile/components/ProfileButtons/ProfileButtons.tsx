@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {View, Text, ImageSourcePropType, TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import COLORS from '../../../../constants/colors';
 
 import styles from './styles';
 
@@ -17,11 +18,11 @@ const ProfileButtons = () => {
           style={[
             styles.followWrapper,
             {
-              backgroundColor: follow ? undefined : '#3493D9',
+              backgroundColor: follow ? undefined : COLORS.BLUE_FOLLOW,
               borderWidth: follow ? 1 : 0,
             },
           ]}>
-          <Text style={{color: follow ? 'black' : 'white'}}>
+          <Text style={{color: follow ? COLORS.BLACK : COLORS.WHITE}}>
             {follow ? 'Following' : 'Follow'}
           </Text>
         </View>
@@ -30,7 +31,10 @@ const ProfileButtons = () => {
         <Text>Message</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.dropDownWrapper}>
-        <Feather name="chevron-down" style={{fontSize: 20, color: 'black'}} />
+        <Feather
+          name="chevron-down"
+          style={{fontSize: 20, color: COLORS.BLACK}}
+        />
       </TouchableOpacity>
     </View>
   );

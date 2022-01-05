@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   rootContainer: {
     width: '100%',
     height: '100%',
-    backgroundColor: 'white',
+    backgroundColor: COLORS.WHITE,
     padding: 10,
   },
 

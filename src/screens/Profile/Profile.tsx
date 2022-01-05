@@ -9,6 +9,7 @@ import TopTabComponent from './components/TopTabComponent';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {NavigateScreenProps} from '../../navigation/StackNavigation';
+import COLORS from '../../constants/colors';
 
 const Profile = () => {
   let circuls = [];
@@ -19,7 +20,7 @@ const Profile = () => {
       <View key={index}>
         {index === 0 ? (
           <TouchableOpacity style={styles.plusCircle}>
-            <Entypo name="plus" style={{fontSize: 40, color: 'black'}} />
+            <Entypo name="plus" style={{fontSize: 40, color: COLORS.BLACK}} />
           </TouchableOpacity>
         ) : (
           <View style={styles.emptyCircles}></View>

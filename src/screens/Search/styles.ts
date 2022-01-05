@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   rootContanier: {
     width: '100%',
     height: '100%',
-    backgroundColor: 'white',
+    backgroundColor: COLORS.WHITE,
   },
 
   plusButtonWrapper: {

@@ -9,8 +9,6 @@ import COLORS from '../../../../constants/colors';
 
 const screenWidth = Dimensions.get('window').width;
 
-console.log(screenWidth);
-
 const separatorWidth = 2;
 
 const squareWidth = (screenWidth - separatorWidth * 2) / 3;

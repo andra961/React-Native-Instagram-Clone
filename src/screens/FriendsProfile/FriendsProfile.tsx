@@ -29,14 +29,17 @@ const FriendsProfile = () => {
     <View style={styles.rootContainer}>
       <View style={styles.headerContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back" style={{fontSize: 20, color: 'black'}} />
+          <Ionicons
+            name="arrow-back"
+            style={{fontSize: 20, color: COLORS.BLACK}}
+          />
         </TouchableOpacity>
         <View style={styles.headerRightContainer}>
           <Text style={styles.headerNameText}>{name}</Text>
           <TouchableOpacity>
             <Feather
               name="more-vertical"
-              style={{fontSize: 20, color: 'black'}}
+              style={{fontSize: 20, color: COLORS.BLACK}}
             />
           </TouchableOpacity>
         </View>
@@ -68,7 +71,11 @@ const FriendsProfile = () => {
                         style={styles.closeButtonWrapper}>
                         <AntDesign
                           name="close"
-                          style={{fontSize: 20, color: 'black', opacity: 0.5}}
+                          style={{
+                            fontSize: 20,
+                            color: COLORS.BLACK,
+                            opacity: 0.5,
+                          }}
                         />
                       </TouchableOpacity>
                       <Image

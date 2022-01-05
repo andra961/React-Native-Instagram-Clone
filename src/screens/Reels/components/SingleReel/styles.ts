@@ -4,7 +4,7 @@ import COLORS from '../../../../constants/colors';
 const styles = StyleSheet.create({
   reelContainer: {},
 
-  videoWrapper: {
+  bodyContainer: {
     width: '100%',
     position: 'absolute',
     top: 0,
@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'absolute',
+    top: 0,
   },
 
   muteIconWrapper: {
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   overlayContainer: {
     position: 'absolute',
     zIndex: 1,
-    bottom: 80,
+    bottom: 0,
     left: 0,
     paddingBottom: 10,
   },
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
 
   actionsContainer: {
     position: 'absolute',
-    bottom: 110,
+    bottom: 30,
     right: 12,
     alignItems: 'center',
   },

@@ -52,21 +52,23 @@ const SingleReel = ({item, index, currentIndex}: any) => {
           height: screenHeight,
         },
       ]}>
-      <TouchableOpacity
-        activeOpacity={0.9}
-        onPress={() => setMute(prev => !prev)}
-        style={[styles.videoWrapper, {height: videoHeight}]}>
-        <Video
-          source={item.video}
-          ref={videoRef}
-          onBuffer={onBuffer}
-          onError={onError}
-          repeat={true}
-          paused={currentIndex === index ? false : true}
-          muted={mute}
-          resizeMode="cover"
-          style={styles.video}
-        />
+      <View style={[styles.bodyContainer, {height: videoHeight}]}>
+        <TouchableOpacity
+          activeOpacity={0.9}
+          onPress={() => setMute(prev => !prev)}
+          style={{width: '100%', height: '100%', position: 'absolute'}}>
+          <Video
+            source={item.video}
+            ref={videoRef}
+            onBuffer={onBuffer}
+            onError={onError}
+            repeat={true}
+            paused={currentIndex === index ? false : true}
+            muted={mute}
+            style={styles.video}
+          />
+        </TouchableOpacity>
+
         {mute ? (
           <View style={styles.muteIconWrapper}>
             <Ionicons
@@ -78,56 +80,56 @@ const SingleReel = ({item, index, currentIndex}: any) => {
             />
           </View>
         ) : null}
-      </TouchableOpacity>
 
-      <View style={styles.overlayContainer}>
-        <TouchableOpacity style={{width: 150}}>
-          <View style={styles.infoContainer}>
-            <View style={styles.roundUserImgOutline}>
-              <Image source={item.postProfile} style={styles.roundUserImg} />
+        <View style={styles.overlayContainer}>
+          <TouchableOpacity style={{width: 150}}>
+            <View style={styles.infoContainer}>
+              <View style={styles.roundUserImgOutline}>
+                <Image source={item.postProfile} style={styles.roundUserImg} />
+              </View>
+              <Text style={styles.reelTitle}>{item.title}</Text>
             </View>
-            <Text style={styles.reelTitle}>{item.title}</Text>
+          </TouchableOpacity>
+          <Text style={styles.reelDescription}>{item.description}</Text>
+          <View style={{flexDirection: 'row', padding: 10}}>
+            <Ionicons
+              name="ios-musical-note"
+              style={{color: COLORS.WHITE, fontSize: 16}}
+            />
+            <Text style={{color: COLORS.WHITE}}>Original Audio</Text>
           </View>
-        </TouchableOpacity>
-        <Text style={styles.reelDescription}>{item.description}</Text>
-        <View style={{flexDirection: 'row', padding: 10}}>
-          <Ionicons
-            name="ios-musical-note"
-            style={{color: COLORS.WHITE, fontSize: 16}}
-          />
-          <Text style={{color: COLORS.WHITE}}>Original Audio</Text>
         </View>
-      </View>
-      <View style={styles.actionsContainer}>
-        <TouchableOpacity
-          onPress={() => setLike(prev => !prev)}
-          style={{paddingBottom: 10}}>
-          <AntDesign
-            name={like ? 'heart' : 'hearto'}
-            style={{color: like ? COLORS.RED : COLORS.WHITE, fontSize: 25}}
-          />
-          <Text style={{color: COLORS.WHITE}}>{item.likes}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={{paddingBottom: 10, margin: 0}}>
-          <Ionicons
-            name="ios-chatbubble-outline"
-            style={{color: COLORS.WHITE, fontSize: 25}}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={{paddingBottom: 10, margin: 0}}>
-          <Ionicons
-            name="paper-plane-outline"
-            style={{color: COLORS.WHITE, fontSize: 25}}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={{paddingBottom: 10, margin: 0}}>
-          <Feather
-            name="more-vertical"
-            style={{color: COLORS.WHITE, fontSize: 25}}
-          />
-        </TouchableOpacity>
-        <View style={styles.squareUserImgOutline}>
-          <Image source={item.postProfile} style={styles.squareUserImg} />
+        <View style={styles.actionsContainer}>
+          <TouchableOpacity
+            onPress={() => setLike(prev => !prev)}
+            style={{paddingBottom: 10}}>
+            <AntDesign
+              name={like ? 'heart' : 'hearto'}
+              style={{color: like ? COLORS.RED : COLORS.WHITE, fontSize: 25}}
+            />
+            <Text style={{color: COLORS.WHITE}}>{item.likes}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={{paddingBottom: 10, margin: 0}}>
+            <Ionicons
+              name="ios-chatbubble-outline"
+              style={{color: COLORS.WHITE, fontSize: 25}}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={{paddingBottom: 10, margin: 0}}>
+            <Ionicons
+              name="paper-plane-outline"
+              style={{color: COLORS.WHITE, fontSize: 25}}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={{paddingBottom: 10, margin: 0}}>
+            <Feather
+              name="more-vertical"
+              style={{color: COLORS.WHITE, fontSize: 25}}
+            />
+          </TouchableOpacity>
+          <View style={styles.squareUserImgOutline}>
+            <Image source={item.postProfile} style={styles.squareUserImg} />
+          </View>
         </View>
       </View>
     </View>
