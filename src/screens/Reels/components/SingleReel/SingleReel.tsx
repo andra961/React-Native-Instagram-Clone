@@ -65,6 +65,7 @@ const SingleReel = ({item, index, currentIndex}: any) => {
             repeat={true}
             paused={currentIndex === index ? false : true}
             muted={mute}
+            resizeMode="cover"
             style={styles.video}
           />
         </TouchableOpacity>
